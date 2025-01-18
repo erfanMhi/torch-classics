@@ -1,5 +1,4 @@
-"""
-Principal Component Analysis Implementation using PyTorch.
+"""Principal Component Analysis Implementation using PyTorch.
 
 This module implements PCA using eigendecomposition of the covariance matrix
 in PyTorch for efficient matrix operations.
