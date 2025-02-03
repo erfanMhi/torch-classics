@@ -1,5 +1,4 @@
-"""
-k-Means Clustering Implementation using PyTorch.
+"""k-Means Clustering Implementation using PyTorch.
 
 This module implements k-Means clustering using PyTorch tensors for efficient
 distance computations and centroid updates.
@@ -13,8 +12,7 @@ import torch
 def k_means(
     X: torch.Tensor, k: int = 3, max_iters: int = 100, tol: float = 1e-5
 ) -> Tuple[torch.Tensor, torch.Tensor]:
-    """
-    Implement k-Means clustering using PyTorch.
+    """Implement k-Means clustering using PyTorch.
 
     Args:
         X: Data matrix of shape [n_samples, n_features]
@@ -48,20 +46,19 @@ def k_means(
                 new_centroids.append(centroids[cluster_idx])
             else:
                 new_centroids.append(cluster_points.mean(dim=0))
-        new_centroids = torch.stack(new_centroids)
+        stacked_centroids = torch.stack(new_centroids)
 
         # Check for convergence
-        if torch.allclose(centroids, new_centroids, atol=tol):
+        if torch.allclose(centroids, stacked_centroids, atol=tol):
             break
 
-        centroids = new_centroids
+        centroids = stacked_centroids
 
     return centroids, cluster_assignments
 
 
 def generate_data(num_samples: int = 100) -> torch.Tensor:
-    """
-    Generate synthetic data with two clear clusters.
+    """Generate synthetic data with two clear clusters.
 
     Args:
         num_samples: Number of samples to generate
@@ -78,8 +75,7 @@ def generate_data(num_samples: int = 100) -> torch.Tensor:
 def compute_inertia(
     X: torch.Tensor, centroids: torch.Tensor, assignments: torch.Tensor
 ) -> float:
-    """
-    Compute the inertia (within-cluster sum of squares).
+    """Compute the inertia (within-cluster sum of squares).
 
     Args:
         X: Data matrix of shape [n_samples, n_features]
